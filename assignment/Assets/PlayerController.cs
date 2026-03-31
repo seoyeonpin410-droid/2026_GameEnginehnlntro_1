@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -49,5 +50,16 @@ public class PlayerController : MonoBehaviour
             myAnimator.SetBool("move", false);
         }
             transform.Translate(Vector3.right * moveSpeed * moveInput.x * Time.deltaTime);
+    }
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "Door")
+            Destroy(collision.gameObject);
+    }
+    */
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        SceneManager.LoadScene("PlayScens_" + collision.name);
     }
 }
